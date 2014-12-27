@@ -31,7 +31,7 @@ public class UseHSV extends UseImage{
 		label2.setText(min[0]+" "+min[1]+" "+min[2]);
 		ShowImage.HSVBinarization(img,binImg,max[0],min[0],max[1],min[1]);
 		conImg = img.clone();
-		//ShowImage.drawLargestContour(conImg, binImg);
+		ShowImage.drawLargestContour(conImg, binImg);
 		canvas.showImage(binImg);
 		//canvas2.showImage(conImg);
 
