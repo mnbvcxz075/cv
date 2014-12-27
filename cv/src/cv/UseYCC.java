@@ -1,6 +1,5 @@
 package cv;
 
-
 import static org.bytedeco.javacpp.opencv_imgproc.*;
 
 import java.awt.GridLayout;
