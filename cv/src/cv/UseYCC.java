@@ -19,8 +19,10 @@ public class UseYCC extends UseImage{
 	UseYCC() throws Exception{
 		super();
 
-		max[0]=135;max[1]=185;max[2]=135;
-		min[0]=70;min[1]=120;min[2]=110;
+		max[0]=135;max[1]=145;max[2]=175;//Lab
+		min[0]=70;min[1]=120;min[2]=60;
+//		max[0]=135;max[1]=185;max[2]=135;//YCC
+//		min[0]=70;min[1]=120;min[2]=110;
 		frame = Controler();
 		frame.setVisible(true);
 
