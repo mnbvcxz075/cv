@@ -30,8 +30,8 @@ public class UseYCC extends UseImage{
 	UseYCC() throws Exception{
 		super();
 
-		max[0]=225;max[1]=185;max[2]=125;
-		min[0]=60;min[1]=130;min[2]=100;
+		max[0]=145;max[1]=185;max[2]=135;
+		min[0]=70;min[1]=120;min[2]=110;
 		frame = Controler();
 		frame.setVisible(true);
 
@@ -45,7 +45,7 @@ public class UseYCC extends UseImage{
 		label2.setText(min[0]+" "+min[1]+" "+min[2]);
 		ShowImage.Binarization(img,binImg,max[0],min[0],max[1],min[1],max[2],min[2],CV_BGR2YCrCb);
 		conImg = img.clone();
-		//ShowImage.drawLargestContour(conImg, binImg);
+		ShowImage.drawLargestContour(conImg, binImg);
 		canvas.showImage(binImg);
 		canvas2.showImage(img);
 
