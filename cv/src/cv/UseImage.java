@@ -65,10 +65,10 @@ public class UseImage extends Thread implements ActionListener{
 		min = new int[3];
 		max[0] = 30;min[0] = 170;max[1] = 180;min[1] = 20;
 
-//		canvas = ShowImage.initCanvas(img.width(),img.height(),600,0,200);
-//
-//		canvas2 = ShowImage.initCanvas(img.width(),img.height(),600,canvas.getWidth(),200);
-//
+		canvas = ShowImage.initCanvas(img.width(),img.height(),600,0,200);
+
+		canvas2 = ShowImage.initCanvas(img.width(),img.height(),600,canvas.getWidth(),200);
+
 
 	}
 
