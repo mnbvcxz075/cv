@@ -87,7 +87,7 @@ public class UseImage extends Thread implements ActionListener{
 		}
 	}
 
-	private void update(){
+	public void update(){
 
 	}
 

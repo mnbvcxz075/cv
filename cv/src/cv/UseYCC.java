@@ -54,7 +54,8 @@ public class UseYCC extends UseImage{
 	}
 
 
-	private void update(){
+	@Override
+	public void update(){
 		label.setText(max[0]+" "+max[1]+" "+max[2]);
 		label2.setText(min[0]+" "+min[1]+" "+min[2]);
 		ShowImage.Binarization(img,binImg,max[0],min[0],max[1],min[1],max[2],min[2],CV_BGR2YCrCb);
