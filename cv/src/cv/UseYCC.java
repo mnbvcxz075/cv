@@ -26,6 +26,19 @@ public class UseYCC extends UseImage{
 		update();
 	}
 
+	public void update() throws Exception{
+		img = grabber.grab();
+		label.setText(max[0]+" "+max[1]+" "+max[2]);
+		label2.setText(min[0]+" "+min[1]+" "+min[2]);
+		ShowImage.HSVBinarization(img,binImg,max[0],min[0],max[1],min[1]);
+		conImg = img.clone();
+		ShowImage.drawLargestContour(conImg, binImg);
+		canvas.showImage(binImg);
+		canvas2.showImage(conImg);
+
+	}
+
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("Ymax +")&&max[0]<=240){
