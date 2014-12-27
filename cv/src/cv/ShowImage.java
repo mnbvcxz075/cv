@@ -1,5 +1,4 @@
 package cv;
-
 import static org.bytedeco.javacpp.helper.opencv_core.*;
 import static org.bytedeco.javacpp.helper.opencv_imgproc.*;
 import static org.bytedeco.javacpp.opencv_core.*;

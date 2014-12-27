@@ -1,6 +1,8 @@
 package cv;
 
 
+import static org.bytedeco.javacpp.opencv_imgproc.*;
+
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.util.HashMap;
@@ -30,7 +32,7 @@ public class UseYCC extends UseImage{
 		img = grabber.grab();
 		label.setText(max[0]+" "+max[1]+" "+max[2]);
 		label2.setText(min[0]+" "+min[1]+" "+min[2]);
-		ShowImage.HSVBinarization(img,binImg,max[0],min[0],max[1],min[1]);
+		ShowImage.Binarization(img,binImg,max[0],min[0],max[1],min[1],max[2],min[2],CV_BGR2YCrCb);
 		conImg = img.clone();
 		ShowImage.drawLargestContour(conImg, binImg);
 		canvas.showImage(binImg);
