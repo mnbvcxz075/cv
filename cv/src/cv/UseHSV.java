@@ -25,7 +25,6 @@ public class UseHSV extends UseImage{
 		update();
 	}
 
-	@Override
 	public void update() throws Exception{
 		img = grabber.grab();
 		label.setText(max[0]+" "+max[1]+" "+max[2]);

@@ -14,6 +14,9 @@ public class Main{
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
+		if(uimg==null){
+			return;
+		}
 
 		while(true){
 			try {
