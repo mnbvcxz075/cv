@@ -1,5 +1,7 @@
 package cv;
 
+import static org.bytedeco.javacpp.opencv_core.*;
+
 import javax.swing.JFrame;
 
 import org.bytedeco.javacpp.opencv_core.IplImage;
@@ -7,12 +9,13 @@ import org.bytedeco.javacv.CanvasFrame;
 import org.bytedeco.javacv.OpenCVFrameGrabber;
 
 public class CamTest {
-
     public static void main(String[] args) {
-        new CamTest().loop();
+    	IplImage binImg = null;
+
+        new CamTest().loop(binImg);
     }
 
-    private void loop() {
+    private void loop(IplImage binImg) {
         CanvasFrame canvas = new CanvasFrame("Webcam");
         canvas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -33,6 +36,8 @@ public class CamTest {
                 // 取ってきた画像を画面に表示
                 if (image != null) {
                     canvas.showImage(image);
+            		binImg = cvCreateImage(image.cvSize(), IPL_DEPTH_8U, 1);
+
                 }
             }
 
@@ -40,7 +45,7 @@ public class CamTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
     }
 
 
