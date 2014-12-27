@@ -39,7 +39,8 @@ public class UseYCC extends UseImage{
 	}
 
 	@Override
-	public void update(){
+	public void update() throws Exception{
+		img = grabber.grab();
 		label.setText(max[0]+" "+max[1]+" "+max[2]);
 		label2.setText(min[0]+" "+min[1]+" "+min[2]);
 		ShowImage.Binarization(img,binImg,max[0],min[0],max[1],min[1],max[2],min[2],CV_BGR2YCrCb);
@@ -88,7 +89,7 @@ public class UseYCC extends UseImage{
 			min[2]-=10;
 		}
 
-		update();
+//		update();
 	}
 
 	@Override

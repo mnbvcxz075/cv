@@ -16,7 +16,14 @@ public class Main{
 			e.printStackTrace();
 		}
 
-		uimg.start();
+		while(true){
+			try {
+				uimg.update();
+			} catch (Exception e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
+		}
 
 	}
 

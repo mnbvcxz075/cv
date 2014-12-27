@@ -14,7 +14,7 @@ import org.bytedeco.javacv.CanvasFrame;
 import org.bytedeco.javacv.FrameGrabber.Exception;
 import org.bytedeco.javacv.OpenCVFrameGrabber;
 
-public class UseImage extends Thread implements ActionListener{
+public class UseImage implements ActionListener{
 
 	CanvasFrame canvas,canvas2;
 	IplImage img = null;
@@ -72,22 +72,8 @@ public class UseImage extends Thread implements ActionListener{
 
 	}
 
-	public void run(){
-		System.out.println("");
-		try {
-			sleep(wait);
 
-			img = grabber.grab();
-
-			update();
-
-		} catch (InterruptedException | Exception e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
-		}
-	}
-
-	public void update(){
+	public void update() throws Exception{
 
 	}
 
