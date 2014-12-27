@@ -50,6 +50,24 @@ public class UseImage extends Thread implements ActionListener{
         grabber.start();
 
 	}
+	UseImage() throws Exception{
+
+		binImg = cvCreateImage(img.cvSize(), IPL_DEPTH_8U, 1);
+		max = new int[3];
+		min = new int[3];
+		max[0] = 30;min[0] = 170;max[1] = 180;min[1] = 20;
+//		ShowImage.HSVBinarization(img,binImg,max[0],min[0],max[1],min[1]);
+
+		canvas = ShowImage.initCanvas(img.width(),img.height(),600,0,200);
+
+		canvas2 = ShowImage.initCanvas(img.width(),img.height(),600,canvas.getWidth(),200);
+
+        grabber = new OpenCVFrameGrabber(1);
+        frameRate = grabber.getFrameRate();
+        wait = (long) (1000 / (frameRate == 0 ? 10 : frameRate));
+        grabber.start();
+
+	}
 
 	@Override
 	public void run(){
