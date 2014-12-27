@@ -46,7 +46,7 @@ public class UseYCC extends UseImage{
 		ShowImage.Binarization(img,binImg,max[0],min[0],max[1],min[1],max[2],min[2],CV_BGR2YCrCb);
 		conImg = img.clone();
 		ShowImage.drawLargestContour(conImg, binImg);
-		//canvas.showImage(binImg);
+		canvas.showImage(binImg);
 		canvas2.showImage(conImg);
 
 	}
