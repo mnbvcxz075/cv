@@ -51,6 +51,12 @@ public class UseImage extends Thread implements ActionListener{
 
 	}
 	UseImage() throws Exception{
+
+        grabber = new OpenCVFrameGrabber(1);
+        frameRate = grabber.getFrameRate();
+        wait = (long) (1000 / (frameRate == 0 ? 10 : frameRate));
+        grabber.start();
+
 		img = grabber.grab();
 
 
@@ -64,10 +70,6 @@ public class UseImage extends Thread implements ActionListener{
 
 		canvas2 = ShowImage.initCanvas(img.width(),img.height(),600,canvas.getWidth(),200);
 
-        grabber = new OpenCVFrameGrabber(1);
-        frameRate = grabber.getFrameRate();
-        wait = (long) (1000 / (frameRate == 0 ? 10 : frameRate));
-        grabber.start();
 
 	}
 
