@@ -20,7 +20,7 @@ public class CamTest {
         canvas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // デフォルト(0)のWebカメラを使う
-        OpenCVFrameGrabber grabber = new OpenCVFrameGrabber(1);
+        OpenCVFrameGrabber grabber = new OpenCVFrameGrabber(0);
         try {
             grabber.start();
 
