@@ -47,7 +47,7 @@ public class UseYCC extends UseImage{
 		conImg = img.clone();
 		ShowImage.drawLargestContour(conImg, binImg);
 		canvas.showImage(binImg);
-		canvas2.showImage(img);
+		canvas2.showImage(conImg);
 
 	}
 	@Override
