@@ -38,22 +38,22 @@ public class UseYCC extends UseImage{
 		update();
 	}
 
-	@Override
-	public void run(){
-		try {
-			sleep(wait);
-
-			img = grabber.grab();
-
-			update();
-
-		} catch (InterruptedException | Exception e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
-		}
-	}
-
-
+//	@Override
+//	public void run(){
+//		try {
+//			sleep(wait);
+//
+//			img = grabber.grab();
+//
+//			update();
+//
+//		} catch (InterruptedException | Exception e) {
+//			// TODO 自動生成された catch ブロック
+//			e.printStackTrace();
+//		}
+//	}
+//
+//
 	@Override
 	public void update(){
 		label.setText(max[0]+" "+max[1]+" "+max[2]);
