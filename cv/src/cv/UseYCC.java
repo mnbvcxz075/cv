@@ -13,9 +13,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.bytedeco.javacv.FrameGrabber.Exception;
+
 public class UseYCC extends UseImage{
 
-	UseYCC(String str){
+	UseYCC(String str) throws Exception{
 		super(str);
 
 		max[0]=225;max[1]=185;max[2]=125;
@@ -75,7 +77,7 @@ public class UseYCC extends UseImage{
 			min[2]-=10;
 		}
 
-		update();
+//		update();
 	}
 
 	@Override

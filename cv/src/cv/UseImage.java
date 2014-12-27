@@ -11,8 +11,10 @@ import javax.swing.JLabel;
 
 import org.bytedeco.javacpp.opencv_core.IplImage;
 import org.bytedeco.javacv.CanvasFrame;
+import org.bytedeco.javacv.FrameGrabber.Exception;
+import org.bytedeco.javacv.OpenCVFrameGrabber;
 
-public class UseImage implements ActionListener{
+public class UseImage extends Thread implements ActionListener{
 
 	CanvasFrame canvas,canvas2;
 	IplImage img = null;
@@ -21,8 +23,11 @@ public class UseImage implements ActionListener{
 	JFrame frame;
 	JLabel label,label2;
 	int[] max,min;
+	double frameRate;
+	long wait;
+	OpenCVFrameGrabber grabber;
 
-	UseImage(String str){
+	UseImage(String str) throws Exception{
 		try {
 			img = ShowImage.loadImage(str);
 		} catch (IOException e) {
@@ -39,9 +44,31 @@ public class UseImage implements ActionListener{
 
 		canvas2 = ShowImage.initCanvas(img.width(),img.height(),600,canvas.getWidth(),200);
 
+        grabber = new OpenCVFrameGrabber(1);
+        frameRate = grabber.getFrameRate();
+        wait = (long) (1000 / (frameRate == 0 ? 10 : frameRate));
+        grabber.start();
 
 	}
 
+	@Override
+	public void run(){
+		try {
+			sleep(wait);
+
+			img = grabber.grab();
+
+			update();
+
+		} catch (InterruptedException | Exception e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+	}
+
+	private void update(){
+
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
