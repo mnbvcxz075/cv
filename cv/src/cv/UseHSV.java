@@ -1,11 +1,7 @@
 package cv;
 
-import static org.bytedeco.javacpp.opencv_core.*;
-
-import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,37 +10,19 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import org.bytedeco.javacpp.opencv_core.IplImage;
-import org.bytedeco.javacv.CanvasFrame;
+import org.bytedeco.javacv.FrameGrabber.Exception;
 
-public class UseHSV implements ActionListener{
+public class UseHSV extends UseImage{
 
-	CanvasFrame canvas;
-	IplImage img = null;
-	IplImage hsv_mask;
-	JFrame frame;
-	JLabel label,label2;
-	int[] max,min;
+	UseHSV( ) throws Exception{
+		super();
 
-	UseHSV(String str){
-		try {
-			img = ShowImage.loadImage(str);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		hsv_mask = cvCreateImage(img.cvSize(), IPL_DEPTH_8U, 1);
-		max = new int[3];
-		min = new int[3];
-		max[0] = 30;min[0] = 170;max[1] = 180;min[1] = 20;
-//		ShowImage.HSVBinarization(img,hsv_mask,max[0],min[0],max[1],min[1]);
-
-		canvas = ShowImage.initCanvas(img.width(),img.height(),600);
-		canvas.showImage(hsv_mask);
-
+		max[0]=225;max[1]=185;max[2]=125;
+		min[0]=60;min[1]=130;min[2]=100;
 		frame = Controler();
 		frame.setVisible(true);
 
+		update();
 	}
 
 
@@ -76,9 +54,6 @@ public class UseHSV implements ActionListener{
 		}
 
 
-		label.setText(max[0]+"~"+min[0]+" "+max[1]+"~"+min[1]+" "+max[2]+"~"+min[2]);
-		ShowImage.HSVBinarization(img,hsv_mask,max[0],min[0],max[1],min[1]);
-		canvas.showImage(hsv_mask);
 	}
 
 	public JFrame Controler(){
@@ -96,26 +71,32 @@ public class UseHSV implements ActionListener{
 		buttons.put("Smin -",new JButton("Smin -"));
 
 		label = new JLabel();
-		label.setText(max[0]+"~"+min[0]+" "+max[1]+"~"+min[1]);
+		label.setText(max[0]+" "+max[1]+" "+max[2]);
+		label2 = new JLabel();
+		label2.setText(min[0]+" "+min[1]+" "+min[2]);
+
 		for(Map.Entry<String,JButton> e:buttons.entrySet()){
 			e.getValue().addActionListener(this);
 		}
+		panel.setLayout(new GridLayout(2,5));
+		panel.add(buttons.get("Hmax +"));
+		panel.add(buttons.get("Hmin +"));
+		panel.add(buttons.get("Smax +"));
+		panel.add(buttons.get("Smin +"));
 
-		panel.setLayout(new BorderLayout());
-		panel.add(buttons.get("Hmax +"),BorderLayout.NORTH);
-		panel.add(buttons.get("Hmax -"),BorderLayout.SOUTH);
-		panel.add(buttons.get("Smax -"),BorderLayout.WEST);
-		panel.add(buttons.get("Smax +"),BorderLayout.EAST);
-		panel.add(buttons.get("Hmin +"),BorderLayout.NORTH);
-		panel.add(buttons.get("Hmin -"),BorderLayout.SOUTH);
-		panel.add(buttons.get("Smin -"),BorderLayout.WEST);
-		panel.add(buttons.get("Smin +"),BorderLayout.EAST);
-		panel.add(label,BorderLayout.CENTER);
+		panel.add(label);
+
+		panel.add(buttons.get("Hmax -"));
+		panel.add(buttons.get("Hmin -"));
+		panel.add(buttons.get("Smax -"));
+		panel.add(buttons.get("Smin -"));
+		panel.add(label2);
 
 
 		frame.add(panel);
 
 		frame.setSize(800, 200);
+		frame.setLocation(0, 0);
 		frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
 
 		return frame;

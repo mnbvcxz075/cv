@@ -63,10 +63,6 @@ public class ShowImage {
         return canvas;
 	}
 
-	public static void updateCanvas(IplImage img){
-
-	}
-
 	public static IplImage loadImage(String fileName) throws IOException{
 		return IplImage.createFrom(ImageIO.read(new File(fileName)));
 	}
@@ -88,9 +84,6 @@ public class ShowImage {
 
 	        cvErode(write,write,null,4);
 	        cvDilate(write,write,null,4);
-//	        cvErode(write,write,null,1);
-//	        cvSmooth(write,write);
-
 
 		}
 		else{
@@ -104,7 +97,6 @@ public class ShowImage {
 	        cvErode(write,write,null,4);
 	        cvDilate(write,write,null,5);
 	        cvErode(write,write,null,1);
-//	        cvSmooth(write,write);
 
 		}
 	}
