@@ -22,7 +22,7 @@ public class UseHSV extends UseImage{
 		frame = Controler();
 		frame.setVisible(true);
 
-		update();
+//		update();
 	}
 
 	public void update() throws Exception{

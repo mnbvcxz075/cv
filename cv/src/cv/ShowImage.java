@@ -69,7 +69,7 @@ public class ShowImage {
 
 	public static void HSVBinarization(IplImage read,IplImage write,int hUpper,int hLower,int sUpper,int sLower){
 		if(hUpper<hLower){
-			IplImage hsvimg =  cvCreateImage(read.cvSize(), 8, 3);
+			IplImage hsvimg =  cvCreateImage(read.cvSize(), IPL_DEPTH_8U, 3);
 			IplImage mask2 = write.clone();
 			CvScalar hsv_min = cvScalar(0,sLower,0,0);
 	        CvScalar hsv_max = cvScalar(hUpper,sUpper,255,255);
