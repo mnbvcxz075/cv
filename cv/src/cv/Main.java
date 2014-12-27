@@ -16,7 +16,7 @@ public class Main{
 			e.printStackTrace();
 		}
 
-		uimg.start();
+//		uimg.start();
 
 	}
 

@@ -64,7 +64,6 @@ public class UseImage extends Thread implements ActionListener{
 		max = new int[3];
 		min = new int[3];
 		max[0] = 30;min[0] = 170;max[1] = 180;min[1] = 20;
-//		ShowImage.HSVBinarization(img,binImg,max[0],min[0],max[1],min[1]);
 
 		canvas = ShowImage.initCanvas(img.width(),img.height(),600,0,200);
 
