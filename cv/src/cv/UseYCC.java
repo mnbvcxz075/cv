@@ -31,7 +31,7 @@ public class UseYCC extends UseImage{
 		img = grabber.grab();
 		label.setText(max[0]+" "+max[1]+" "+max[2]);
 		label2.setText(min[0]+" "+min[1]+" "+min[2]);
-		ShowImage.Binarization(img,binImg,max[0],min[0],max[1],min[1],max[2],min[2],CV_BGR2HSV);
+		ShowImage.Binarization(img,binImg,max[0],min[0],max[1],min[1],max[2],min[2],CV_BGR2Lab);
 		conImg = img.clone();
 		ShowImage.drawLargestContour(conImg, binImg);
 		canvas.showImage(binImg);
