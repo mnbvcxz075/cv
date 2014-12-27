@@ -27,6 +27,16 @@ public class UseYCC extends UseImage{
 
 		update();
 	}
+	UseYCC() throws Exception{
+		super();
+
+		max[0]=225;max[1]=185;max[2]=125;
+		min[0]=60;min[1]=130;min[2]=100;
+		frame = Controler();
+		frame.setVisible(true);
+
+		update();
+	}
 
 	private void update(){
 		label.setText(max[0]+" "+max[1]+" "+max[2]);
