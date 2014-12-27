@@ -51,6 +51,8 @@ public class UseImage extends Thread implements ActionListener{
 
 	}
 	UseImage() throws Exception{
+		img = grabber.grab();
+
 
 		binImg = cvCreateImage(img.cvSize(), IPL_DEPTH_8U, 1);
 		max = new int[3];
