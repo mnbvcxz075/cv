@@ -26,7 +26,6 @@ public class CamTest {
             double frameRate = grabber.getFrameRate();
             long wait = (long) (1000 / (frameRate == 0 ? 10 : frameRate));
 
-            System.out.println(wait);
             // 画像を取りつづける
             while (true) {
                 Thread.sleep(wait);
