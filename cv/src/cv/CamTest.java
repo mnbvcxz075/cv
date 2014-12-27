@@ -1,7 +1,5 @@
 package cv;
 
-import static org.bytedeco.javacpp.opencv_core.*;
-
 import javax.swing.JFrame;
 
 import org.bytedeco.javacpp.opencv_core.IplImage;
@@ -29,18 +27,17 @@ public class CamTest {
             long wait = (long) (1000 / (frameRate == 0 ? 10 : frameRate));
 
             // 画像を取りつづける
-            while (true) {
-                Thread.sleep(wait);
-                IplImage image = grabber.grab();
-
-                // 取ってきた画像を画面に表示
-                if (image != null) {
-                    canvas.showImage(image);
-            		binImg = cvCreateImage(image.cvSize(), IPL_DEPTH_8U, 1);
-
-                }
-            }
-
+//            while (true) {
+//                Thread.sleep(wait);
+//                IplImage image = grabber.grab();
+//
+//                // 取ってきた画像を画面に表示
+//                if (image != null) {
+//                    canvas.showImage(image);
+//            		binImg = cvCreateImage(image.cvSize(), IPL_DEPTH_8U, 1);
+//
+//                }
+//            }
         // 何かあったらエラーを吐いて終わる
         } catch (Exception e) {
             e.printStackTrace();
