@@ -67,7 +67,7 @@ public class UseImage implements ActionListener{
 
 //		canvas = ShowImage.initCanvas(img.width(),img.height(),600,0,200);
 
-		canvas2 = ShowImage.initCanvas(img.width(),img.height(),600,canvas.getWidth(),200);
+		canvas2 = ShowImage.initCanvas(img.width(),img.height(),600,20,200);
 
 
 	}
