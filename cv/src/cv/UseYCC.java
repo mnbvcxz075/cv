@@ -35,7 +35,7 @@ public class UseYCC extends UseImage{
 		frame = Controler();
 		frame.setVisible(true);
 
-//		update();
+		update();
 	}
 
 	private void update(){
@@ -43,7 +43,7 @@ public class UseYCC extends UseImage{
 		label2.setText(min[0]+" "+min[1]+" "+min[2]);
 		ShowImage.Binarization(img,binImg,max[0],min[0],max[1],min[1],max[2],min[2],CV_BGR2YCrCb);
 		conImg = img.clone();
-		ShowImage.drawLargestContour(conImg, binImg);
+		//ShowImage.drawLargestContour(conImg, binImg);
 		canvas.showImage(binImg);
 		canvas2.showImage(conImg);
 
