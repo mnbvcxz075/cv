@@ -35,7 +35,7 @@ public class UseYCC extends UseImage{
 		frame = Controler();
 		frame.setVisible(true);
 
-		update();
+//		update();
 	}
 
 	private void update(){
