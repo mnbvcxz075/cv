@@ -17,7 +17,7 @@ public class UseHSV extends UseImage{
 	UseHSV( ) throws Exception{
 		super();
 
-		max[0]=225;max[1]=185;max[2]=125;
+		max[0]=180;max[1]=185;max[2]=125;
 		min[0]=60;min[1]=130;min[2]=100;
 		frame = Controler();
 		frame.setVisible(true);
@@ -31,7 +31,7 @@ public class UseHSV extends UseImage{
 		label2.setText(min[0]+" "+min[1]+" "+min[2]);
 		ShowImage.HSVBinarization(img,binImg,max[0],min[0],max[1],min[1]);
 		conImg = img.clone();
-		ShowImage.drawLargestContour(conImg, binImg);
+		//ShowImage.drawLargestContour(conImg, binImg);
 		canvas.showImage(binImg);
 		//canvas2.showImage(conImg);
 

@@ -15,16 +15,6 @@ import org.bytedeco.javacv.FrameGrabber.Exception;
 
 public class UseYCC extends UseImage{
 
-	UseYCC(String str) throws Exception{
-		super(str);
-
-		max[0]=225;max[1]=185;max[2]=125;
-		min[0]=60;min[1]=130;min[2]=100;
-		frame = Controler();
-		frame.setVisible(true);
-
-		update();
-	}
 	UseYCC() throws Exception{
 		super();
 
