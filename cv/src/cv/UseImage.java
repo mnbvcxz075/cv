@@ -52,7 +52,7 @@ public class UseImage extends Thread implements ActionListener{
 	}
 	UseImage() throws Exception{
 
-        grabber = new OpenCVFrameGrabber(1);
+        grabber = new OpenCVFrameGrabber(0);
         frameRate = grabber.getFrameRate();
         wait = (long) (1000 / (frameRate == 0 ? 10 : frameRate));
         grabber.start();
