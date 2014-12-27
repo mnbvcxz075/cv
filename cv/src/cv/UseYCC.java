@@ -30,7 +30,7 @@ public class UseYCC extends UseImage{
 	UseYCC() throws Exception{
 		super();
 
-		max[0]=145;max[1]=185;max[2]=135;
+		max[0]=135;max[1]=185;max[2]=135;
 		min[0]=70;min[1]=120;min[2]=110;
 		frame = Controler();
 		frame.setVisible(true);
@@ -46,7 +46,7 @@ public class UseYCC extends UseImage{
 		ShowImage.Binarization(img,binImg,max[0],min[0],max[1],min[1],max[2],min[2],CV_BGR2YCrCb);
 		conImg = img.clone();
 		ShowImage.drawLargestContour(conImg, binImg);
-		canvas.showImage(binImg);
+//		canvas.showImage(binImg);
 		canvas2.showImage(conImg);
 
 	}
