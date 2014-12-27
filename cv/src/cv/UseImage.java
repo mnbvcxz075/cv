@@ -72,7 +72,6 @@ public class UseImage extends Thread implements ActionListener{
 
 	}
 
-	@Override
 	public void run(){
 		System.out.println("");
 		try {
