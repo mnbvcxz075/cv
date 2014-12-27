@@ -156,7 +156,7 @@ public class ShowImage {
 
 		CvSeq hull = cvConvexHull2(approxPoly,hullStrage,CV_CLOCKWISE,1);
 
-		cvDrawContours (img, approxPoly, CV_RGB (255, 0, 0), CV_RGB (0, 255, 0), 0, 2, CV_AA, cvPoint (0, 0));
+		cvDrawContours (img, approxPoly, CV_RGB (0, 255, 0), CV_RGB (0, 255, 0), 0, 2, CV_AA, cvPoint (0, 0));
 		cvDrawContours (img, hull, CV_RGB (255, 0, 0), CV_RGB (0, 255, 0), 0, 2, CV_AA, cvPoint (0, 0));
 		 for(int i = 0; i < hull.total(); i++){
 	            CvPoint v=new CvPoint(cvGetSeqElem(hull, i));
