@@ -158,6 +158,10 @@ public class ShowImage {
 		return largestContour;
 	}
 
+	public static void imagePreparation(IplImage img){
+		
+	}
+	
 	public static void main(String args[]){
 		IplImage img = null;
 		try {
