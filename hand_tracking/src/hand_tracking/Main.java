@@ -34,7 +34,7 @@ public class Main {
 			e.printStackTrace();
 		}
         try {
-			grabber.grab().width();
+			System.out.println(grabber.grab().width());
 		} catch (Exception e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
