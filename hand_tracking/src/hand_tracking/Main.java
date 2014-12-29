@@ -33,7 +33,7 @@ public class Main {
 			try{
 				hand.getCameraImage();
 				hand.binarization();
-				System.out.println(hand.getCentroid());
+//				System.out.println(hand.getCentroid());
 			}catch(Exception e){
 
 			}
