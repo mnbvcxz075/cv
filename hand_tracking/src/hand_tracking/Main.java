@@ -2,6 +2,9 @@ package hand_tracking;
 
 import java.awt.AWTException;
 
+import org.bytedeco.javacv.FrameGrabber.Exception;
+import org.bytedeco.javacv.OpenCVFrameGrabber;
+
 
 public class Main {
 	public static void main(String args[]){
@@ -17,15 +20,25 @@ public class Main {
 			System.exit(-1);
 		}
 
-		for(int i=0;i<400;i++){
-			try {
-				Thread.sleep(10);
-			} catch (InterruptedException e) {
-				// TODO 自動生成された catch ブロック
-				e.printStackTrace();
-			}
-			robot.setPosition(i, i);
-			robot.mouseMove();
+
+
+
+
+		OpenCVFrameGrabber grabber = new OpenCVFrameGrabber(0);
+        double frameRate = grabber.getFrameRate();
+        long wait = (long) (1000 / (frameRate == 0 ? 10 : frameRate));
+        try {
+			grabber.start();
+		} catch (Exception e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
 		}
+        try {
+			grabber.grab().width();
+		} catch (Exception e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+
 	}
 }
