@@ -25,8 +25,6 @@ public class Main {
 
 
 		OpenCVFrameGrabber grabber = new OpenCVFrameGrabber(0);
-        double frameRate = grabber.getFrameRate();
-        long wait = (long) (1000 / (frameRate == 0 ? 10 : frameRate));
         try {
 			grabber.start();
 		} catch (Exception e) {
