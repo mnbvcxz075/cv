@@ -97,8 +97,10 @@ public class MakeSomeImage {
 					case 12:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 228);break;
 					case 13:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 247);break;
 					}
-					System.out.println(img.imageData().get(t*4+s*img.widthStep()+i*8)+""
-									+cvGet2D(img,t,s));
+					System.out.println(img.imageData().get(t*4+s*img.widthStep())+","
+							+img.imageData().get(t*4+s*img.widthStep()+8)+","
+							+img.imageData().get(t*4+s*img.widthStep()+16)+","
+							+cvGet2D(img,t,s));
 				}
 			}
 		}
@@ -107,7 +109,7 @@ public class MakeSomeImage {
 	int byteNum(int i){
 		i+=128;
 		if(i==0){
-			return 0; 
+			return 0;
 		}else if(i<20){
 			return 1;
 		}else if(i<40){
