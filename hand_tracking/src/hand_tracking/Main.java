@@ -22,6 +22,7 @@ public class Main {
 		HandRecognition hand = null;
 		try {
 			hand = new HandRecognition();
+			System.out.println(hand.img);
 		} catch (Exception e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
@@ -35,16 +36,16 @@ public class Main {
 
 
 //		while(true){
-		for(int i=0;i<10000000;i++){
-			try{
-				hand.getCameraImage();
-				hand.binarization();
-				//MakeCanvas canvas = new MakeCanvas(hand.binImg);
-				System.out.println(hand.getCentroid());
-			}catch(Exception e){
-
-			}
-		}
+//		for(int i=0;i<10000000;i++){
+//			try{
+//				hand.getCameraImage();
+//				hand.binarization();
+//				//MakeCanvas canvas = new MakeCanvas(hand.binImg);
+//				System.out.println(hand.getCentroid());
+//			}catch(Exception e){
+//
+//			}
+//		}
 
 	}
 }
