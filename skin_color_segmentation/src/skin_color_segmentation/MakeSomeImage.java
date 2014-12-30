@@ -97,7 +97,7 @@ public class MakeSomeImage {
 					case 12:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 228);break;
 					case 13:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 247);break;
 					}
-					System.out.println(img.imageData().get(t*4+s*img.widthStep())+","
+					System.out.println(img.imageData().get(t*8+s*img.widthStep())+","
 							+img.imageData().get(t*4+s*img.widthStep()+8)+","
 							+img.imageData().get(t*4+s*img.widthStep()+16)+","
 							+img.imageData().get(t*4+s*img.widthStep()+24)+","
