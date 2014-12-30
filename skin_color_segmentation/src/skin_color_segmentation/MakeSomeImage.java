@@ -52,14 +52,14 @@ public class MakeSomeImage {
 			System.exit(0);
 		}
 
-		while(true){
+//		while(true){
 			try {
 				obj.update();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+//		}
 
 	}
 
