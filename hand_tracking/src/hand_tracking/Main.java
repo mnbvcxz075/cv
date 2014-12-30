@@ -35,12 +35,13 @@ public class Main {
 
 
 
+		MakeCanvas canvas = new MakeCanvas(hand.binImg);
 //		while(true){
 		for(int i=0;i<10000000;i++){
 			try{
 				hand.getCameraImage();
 				hand.binarization();
-				MakeCanvas canvas = new MakeCanvas(hand.binImg);
+				canvas.canvas.showImage(hand.binImg);
 				System.out.println(hand.getCentroid());
 			}catch(Exception e){
 
