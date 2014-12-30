@@ -18,8 +18,9 @@ public class MakeSomeImage {
 		grabber = new OpenCVFrameGrabber(0);
 		grabber.start();
 		img = grabber.grab();
-		cvRectangle(img,cvPoint(0,0),cvPoint(4,4), cvScalar(255,255,0,0),-1,1,0);
-		cvRectangle(img,cvPoint(0,2),cvPoint(2,3), cvScalar(0,0,255,0),-1,1,0);
+//		img = cvCreateImage(cvSize(4,4), IPL_DEPTH_8U, 3);
+//		cvRectangle(img,cvPoint(0,0),cvPoint(4,4), cvScalar(255,100,0,0),-1,1,0);
+//		cvRectangle(img,cvPoint(0,2),cvPoint(2,3), cvScalar(0,0,255,0),-1,1,0);
 
 		imgs= new IplImage[3];
 
@@ -35,7 +36,7 @@ public class MakeSomeImage {
 		canvas[3]=new CanvasFrame("r");
 
 		for(int i=0;i<4;i++){
-					canvas[i].setCanvasSize(img.width()/2,img.height()/2);
+			canvas[i].setCanvasSize(img.width()/2,img.height()/2);
 			canvas[i].setVisible(true);
 		}
 
@@ -55,14 +56,14 @@ public class MakeSomeImage {
 			System.exit(0);
 		}
 
-		while(true){
+//		while(true){
 			try {
 				obj.update();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+//		}
 
 	}
 
@@ -84,45 +85,9 @@ public class MakeSomeImage {
 		for(int i=0;i<3;i++){
 			for(int s=0;s<img.height();s++){
 				for(int t=0;t<img.widthStep();t++){
-					imgs[i].imageData().put(t+s*imgs[i].widthStep(),(byte) byteNum(img.imageData().get(t*3+s*img.widthStep()+i)));
+					imgs[i].imageData().put(t+s*imgs[i].widthStep(),(img.imageData().get(t*3+s*img.widthStep()+i)));
 				}
-				System.out.println();
 			}
-		}
-	}
-
-	int byteNum(int i){
-		if(i<0){
-			i=255-i;
-		}
-		if(i==0){
-			return 0;
-		}else if(i<20){
-			return 1;
-		}else if(i<40){
-			return 2;
-		}else if(i<60){
-			return 3;
-		}else if(i<80){
-			return 4;
-		}else if(i<100){
-			return 5;
-		}else if(i<120){
-			return 6;
-		}else if(i<140){
-			return 7;
-		}else if(i<160){
-			return 8;
-		}else if(i<180){
-			return 9;
-		}else if(i<200){
-			return 10;
-		}else if(i<220){
-			return 11;
-		}else if(i<240){
-			return 12;
-		}else{
-			return 13;
 		}
 	}
 }
