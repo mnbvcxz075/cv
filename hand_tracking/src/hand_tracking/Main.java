@@ -32,7 +32,7 @@ public class Main {
 			System.exit(1);
 		}
 
-		MakeFrames Frames = new MakeFrames(hand);
+		MakeFrames frames = new MakeFrames(hand);
 
 
 //		while(true){
@@ -40,6 +40,7 @@ public class Main {
 			try{
 				hand.getCameraImage();
 				hand.binarization();
+				frames.update();
 				System.out.println(hand.getCentroid());
 			}catch(Exception e){
 

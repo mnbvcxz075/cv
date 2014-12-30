@@ -122,4 +122,7 @@ public class MakeFrames implements ActionListener{
 		label2.setText(hand.getMinThreshold().toString());
 	}
 
+	public void update(){
+		canvas.showImage(hand.binImg);
+	}
 }
