@@ -117,7 +117,7 @@ public class MakeSomeImage {
 							+img.imageData().get(t*4+s*img.widthStep()+17)+","
 							+img.imageData().get(t*4+s*img.widthStep()+18)+","
 							+img.imageData().get(t*4+s*img.widthStep()+19)+"\n"
-							+cvGet2D(img,s,t)+" "+cvGet2D(img,s,t));
+							+cvGet2D(img,s,t)+" "+cvGet2D(img,s,t+1));
 				}
 			}
 		}
