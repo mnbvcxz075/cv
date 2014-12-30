@@ -65,7 +65,7 @@ public class HandRecognition {
 	}
 
 	void getCameraImage() throws Exception{
-		//img = grabber.grab();
+		img = grabber.grab();
 	}
 
 	java.awt.Point getCentroid(){
