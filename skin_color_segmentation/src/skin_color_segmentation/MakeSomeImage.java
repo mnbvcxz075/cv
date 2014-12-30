@@ -39,7 +39,7 @@ public class MakeSomeImage {
 		try {
 			obj = new MakeSomeImage();
 		} catch (Exception e) {
-			// TODO 自動生成された catch ブロック
+			// TODO 閾ｪ蜍慕函謌舌＆繧後◆ catch 繝悶Ο繝�繧ｯ
 			e.printStackTrace();
 		}
 
@@ -48,14 +48,20 @@ public class MakeSomeImage {
 		}
 
 		while(true){
-			obj.update();
+			try {
+				obj.update();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 	}
 
-	void update(){
+	void update() throws Exception{
 
-//		makeImages();
+		makeImages();
+		img=grabber.grab();
 		canvas[0].showImage(img);
 
 		for(int i=0;i<3;i++){
@@ -70,7 +76,7 @@ public class MakeSomeImage {
 		for(int i=0;i<3;i++){
 			for(int s=0;s<img.height();s++){
 				for(int t=0;t<img.width();t++){
-					switch(byteNum(img.imageData().get(t*4+s*img.widthStep()+i*8))){
+				switch(byteNum(img.imageData().get(t*4+s*img.widthStep()+i*8))){
 					case 0:imgs[i].imageData().put(t+s*img.widthStep(), (byte) 0);break;
 					case 1:imgs[i].imageData().put(t+s*img.widthStep(), (byte) 19);break;
 					case 2:imgs[i].imageData().put(t+s*img.widthStep(), (byte) 38);break;
@@ -86,12 +92,14 @@ public class MakeSomeImage {
 					case 12:imgs[i].imageData().put(t+s*img.widthStep(), (byte) 228);break;
 					case 13:imgs[i].imageData().put(t+s*img.widthStep(), (byte) 247);break;
 					}
+					//System.out.println(img.imageData().get(t*4+s*img.widthStep()+i*8));
 				}
 			}
 		}
 	}
 
 	int byteNum(int i){
+		i+=128;
 		if(i==0){
 			return 0;
 		}else if(i<20){
