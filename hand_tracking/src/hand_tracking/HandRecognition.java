@@ -43,7 +43,9 @@ public class HandRecognition {
         grabber = new OpenCVFrameGrabber(0);
         double frameRate = grabber.getFrameRate();
         grabber.start();
+
 		img = grabber.grab();
+		centroid= new java.awt.Point();
 
         binImg = cvCreateImage(img.cvSize(), IPL_DEPTH_8U, 1);
         contours = new CvContour();
@@ -128,7 +130,7 @@ public class HandRecognition {
 
         //モーメントを用いた重心の導出
 		cvMoments(contours,moment);
-		centroid .x =(int)(moment.m01()/moment.m00());
+		centroid.x =(int)(moment.m01()/moment.m00());
 		centroid.y = (int)(moment.m10()/moment.m00());
 		cvCircle(binImg,cvPoint(centroid.x,centroid.y),25, cvScalar(0,0,255,0),-1,4,0);
 //
