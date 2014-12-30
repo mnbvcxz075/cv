@@ -79,9 +79,9 @@ public class HandRecognition {
 		cvInRangeS(tempImg, minThreshold, maxThreshold,binImg);
 
 		//ノイズ除去
-//		cvErode(binImg,binImg,null,4);
-//		cvDilate(binImg,binImg,null,5);
-//		cvErode(binImg,binImg,null,1);
+		cvErode(binImg,binImg,null,4);
+		cvDilate(binImg,binImg,null,5);
+		cvErode(binImg,binImg,null,1);
 
 		//輪郭抽出
 		cvFindContours(binImg.clone(),mem,contours,Loader.sizeof(CvContour.class),CV_RETR_EXTERNAL,CV_CHAIN_APPROX_NONE  );
