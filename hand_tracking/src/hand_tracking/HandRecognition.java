@@ -33,8 +33,8 @@ public class HandRecognition {
 	private CvMemStorage mem ;
 	private CvMoments moment;
 	private OpenCVFrameGrabber grabber;
-	private  CvScalar maxThreshold = cvScalar(20,145,255,0)
-			,minThreshold = cvScalar(0,120,0,0);
+	private  CvScalar maxThreshold = cvScalar(0,0,255,255)
+			,minThreshold = cvScalar(0,0,0,0);
 	private final int BIN_TYPE = CV_BGR2HSV;
 
 
