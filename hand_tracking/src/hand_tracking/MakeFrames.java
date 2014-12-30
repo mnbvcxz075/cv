@@ -100,7 +100,7 @@ public class MakeFrames implements ActionListener{
 		if(e.getActionCommand().equals("Cbmax -")&&hand.getMaxThreshold(2)-amount>=0){
 			hand.setMaxThreshold(2, hand.getMaxThreshold(2)-amount);
 		}
-		if(e.getActionCommand().equals("Ymin +")&&hand.getMaxThreshold(0)+amount<=255){
+		if(e.getActionCommand().equals("Ymin +")&&hand.getMaxThreshold(0)+amount<=254){
 			hand.setMinThreshold(0, hand.getMinThreshold(0)+amount);
 		}
 		if(e.getActionCommand().equals("Ymin -")&&hand.getMaxThreshold(0)-amount>=0){
