@@ -24,7 +24,7 @@ public class MakeSomeImage {
 //		img = cvCreateImage(cvSize(4,4), IPL_DEPTH_8U, 3);
 //		cvRectangle(img,cvPoint(0,0),cvPoint(4,4), cvScalar(255,100,0,0),-1,1,0);
 //		cvRectangle(img,cvPoint(0,2),cvPoint(2,3), cvScalar(0,0,255,0),-1,1,0);
-//
+
 		imgs= new IplImage[3];
 
 		for(int i=0;i<3;i++){
