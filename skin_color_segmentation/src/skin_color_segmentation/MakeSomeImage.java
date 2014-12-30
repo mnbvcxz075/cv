@@ -72,8 +72,8 @@ public class MakeSomeImage {
 
 		makeImages();
 		img=grabber.grab();
-		cvCvtColor(img,img,CV_BGR2HSV);
 		canvas[0].showImage(img);
+		cvCvtColor(img,img,CV_BGR2HSV);
 
 		for(int i=0;i<3;i++){
 			canvas[i+1].showImage(imgs[i]);
