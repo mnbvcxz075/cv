@@ -46,6 +46,10 @@ public class HandRecognition {
         binImg = cvCreateImage(img.cvSize(), IPL_DEPTH_8U, 1);
         contours = new CvContour();
         mem = CvMemStorage.create();
+        moment =new CvMoments();
+        tempImg = cvCreateImage(img.cvSize(),IPL_DEPTH_8U, 3);
+        dist =cvCreateImage(img.cvSize(),IPL_DEPTH_32F, 1);
+
 
 	}
 	HandRecognition(String url) throws IOException{

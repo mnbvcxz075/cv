@@ -36,16 +36,16 @@ public class Main {
 
 
 //		while(true){
-//		for(int i=0;i<10000000;i++){
-//			try{
-//				hand.getCameraImage();
-//				hand.binarization();
-//				//MakeCanvas canvas = new MakeCanvas(hand.binImg);
-//				System.out.println(hand.getCentroid());
-//			}catch(Exception e){
-//
-//			}
-//		}
+		for(int i=0;i<10000000;i++){
+			try{
+				hand.getCameraImage();
+				hand.binarization();
+				//MakeCanvas canvas = new MakeCanvas(hand.binImg);
+				System.out.println(hand.getCentroid());
+			}catch(Exception e){
+
+			}
+		}
 
 	}
 }
