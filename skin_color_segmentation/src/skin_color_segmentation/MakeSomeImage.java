@@ -98,16 +98,16 @@ public class MakeSomeImage {
 					case 13:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 247);break;
 					}
 					System.out.println(img.imageData().get(t*4+s*img.widthStep())+","
+							+img.imageData().get(t*4+s*img.widthStep()+1)+","
+							+img.imageData().get(t*4+s*img.widthStep()+2)+","
+							+img.imageData().get(t*4+s*img.widthStep()+3)+","
+							+img.imageData().get(t*4+s*img.widthStep()+4)+","
+							+img.imageData().get(t*4+s*img.widthStep()+5)+","
+							+img.imageData().get(t*4+s*img.widthStep()+6)+","
+							+img.imageData().get(t*4+s*img.widthStep()+7)+","
 							+img.imageData().get(t*4+s*img.widthStep()+8)+","
-							+img.imageData().get(t*4+s*img.widthStep()+16)+","
-							+img.imageData().get(t*4+s*img.widthStep()+24)+","
-							+img.imageData().get(t*4+s*img.widthStep()+32)+","
-							+img.imageData().get(t*4+s*img.widthStep()+40)+","
-							+img.imageData().get(t*4+s*img.widthStep()+48)+","
-							+img.imageData().get(t*4+s*img.widthStep()+56)+","
-							+img.imageData().get(t*4+s*img.widthStep()+64)+","
-							+img.imageData().get(t*4+s*img.widthStep()+72)+","
-							+img.imageData().get(t*4+s*img.widthStep()+80)+","
+							+img.imageData().get(t*4+s*img.widthStep()+9)+","
+							+img.imageData().get(t*4+s*img.widthStep()+10)+","
 							+cvGet2D(img,s,t));
 				}
 			}
