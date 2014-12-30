@@ -21,6 +21,8 @@ import org.bytedeco.javacv.FrameGrabber.Exception;
 import org.bytedeco.javacv.OpenCVFrameGrabber;
 
 public class HandRecognition {
+	private java.awt.Point centroid;
+
 	IplImage img;
 	IplImage binImg;
 	IplImage tempImg;
@@ -67,8 +69,7 @@ public class HandRecognition {
 	}
 
 	java.awt.Point getCentroid(){
-		return new java.awt.Point((int)(moment.m01()/moment.m00())
-						,(int)(moment.m10()/moment.m00()));
+		return centroid;
 	}
 
 	void binarization(){
@@ -78,9 +79,9 @@ public class HandRecognition {
 		cvInRangeS(tempImg, minThreshold, maxThreshold,binImg);
 
 		//ノイズ除去
-		cvErode(binImg,binImg,null,4);
-		cvDilate(binImg,binImg,null,5);
-		cvErode(binImg,binImg,null,1);
+//		cvErode(binImg,binImg,null,4);
+//		cvDilate(binImg,binImg,null,5);
+//		cvErode(binImg,binImg,null,1);
 
 		//輪郭抽出
 		cvFindContours(binImg.clone(),mem,contours,Loader.sizeof(CvContour.class),CV_RETR_EXTERNAL,CV_CHAIN_APPROX_NONE  );
@@ -126,8 +127,9 @@ public class HandRecognition {
 
         //モーメントを用いた重心の導出
 		cvMoments(contours,moment);
-//		cvCircle(binImg,cvPoint(p.x,p.y),25, cvScalar(0,0,255,0),-1,4,0);
-		cvCircle(binImg,cvPoint((int)(moment.m10()/moment.m00()),(int)(moment.m01()/moment.m00())),25, cvScalar(0,0,255,0),-1,4,0);
+		centroid = new java.awt.Point((int)(moment.m01()/moment.m00())
+				,(int)(moment.m10()/moment.m00()));
+		cvCircle(binImg,cvPoint(centroid.x,centroid.y),25, cvScalar(0,0,255,0),-1,4,0);
 //
 	}
 
