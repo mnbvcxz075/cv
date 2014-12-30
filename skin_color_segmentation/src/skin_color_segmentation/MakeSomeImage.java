@@ -55,11 +55,11 @@ public class MakeSomeImage {
 
 	void update(){
 
-		makeImages();
+//		makeImages();
 		canvas[0].showImage(img);
 
 		for(int i=0;i<3;i++){
-//			canvas[i+1].showImage(imgs[i]);
+			canvas[i+1].showImage(imgs[i]);
 		}
 
 	}
