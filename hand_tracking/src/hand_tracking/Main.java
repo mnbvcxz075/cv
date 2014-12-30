@@ -1,7 +1,5 @@
 package hand_tracking;
 
-import java.io.IOException;
-
 import org.bytedeco.javacv.FrameGrabber.Exception;
 
 
@@ -23,8 +21,8 @@ public class Main {
 
 		HandRecognition hand = null;
 		try {
-			hand = new HandRecognition("D:\\desktop\\img2.jpg");
-		} catch (IOException e) {
+			hand = new HandRecognition();
+		} catch (Exception e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
@@ -37,7 +35,7 @@ public class Main {
 
 
 //		while(true){
-		for(int i=0;i<100;i++){
+		for(int i=0;i<10000000;i++){
 			try{
 				hand.getCameraImage();
 				hand.binarization();
