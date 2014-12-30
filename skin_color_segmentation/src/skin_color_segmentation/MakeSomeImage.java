@@ -79,8 +79,8 @@ public class MakeSomeImage {
 
 	void makeImages(){
 		for(int i=0;i<3;i++){
-			for(int s=0;s<1;s++){
-				for(int t=0;t<1;t++){
+			for(int s=0;s<img.height();s++){
+				for(int t=0;t<img.width();t++){
 				switch(byteNum(img.imageData().get(t*3+s*img.widthStep()+i*8))){
 					case 0:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 0);break;
 					case 1:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 19);break;
@@ -116,8 +116,8 @@ public class MakeSomeImage {
 							+img.imageData().get(t*4+s*img.widthStep()+16)+","
 							+img.imageData().get(t*4+s*img.widthStep()+17)+","
 							+img.imageData().get(t*4+s*img.widthStep()+18)+","
-							+img.imageData().get(t*4+s*img.widthStep()+19)+"\n"
-							+cvGet2D(img,s,t)+" "+cvGet2D(img,s,t+1));
+							+img.imageData().get(t*4+s*img.widthStep()+19)+"\n");
+							//+cvGet2D(img,s,t)+" "+cvGet2D(img,s,t+1));
 				}
 			}
 		}
