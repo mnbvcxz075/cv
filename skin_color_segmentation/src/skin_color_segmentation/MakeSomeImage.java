@@ -108,7 +108,16 @@ public class MakeSomeImage {
 							+img.imageData().get(t*4+s*img.widthStep()+8)+","
 							+img.imageData().get(t*4+s*img.widthStep()+9)+","
 							+img.imageData().get(t*4+s*img.widthStep()+10)+","
-							+cvGet2D(img,s,t));
+							+img.imageData().get(t*4+s*img.widthStep()+11)+"\n"
+							+img.imageData().get(t*4+s*img.widthStep()+12)+","
+							+img.imageData().get(t*4+s*img.widthStep()+13)+","
+							+img.imageData().get(t*4+s*img.widthStep()+14)+","
+							+img.imageData().get(t*4+s*img.widthStep()+15)+"\n"
+							+img.imageData().get(t*4+s*img.widthStep()+16)+","
+							+img.imageData().get(t*4+s*img.widthStep()+17)+","
+							+img.imageData().get(t*4+s*img.widthStep()+18)+","
+							+img.imageData().get(t*4+s*img.widthStep()+19)+"\n"
+							+cvGet2D(img,s,t)+" "+cvGet2D(img,s,t));
 				}
 			}
 		}
