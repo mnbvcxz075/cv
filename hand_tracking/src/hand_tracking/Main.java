@@ -1,23 +1,13 @@
 package hand_tracking;
 
+import java.awt.AWTException;
+
 import org.bytedeco.javacv.FrameGrabber.Exception;
 
 
 public class Main {
 	public static void main(String args[]){
-//		ControlMouse robot = null;
-//
-//
-//		try {
-//			robot = new ControlMouse();
-//		} catch (AWTException e) {
-//			// TODO 自動生成された catch ブロック
-//			e.printStackTrace();
-//		}
-//		if(robot ==null){
-//			System.exit(-1);
-//		}
-
+		HandMouse robot = null;
 
 		HandRecognition hand = null;
 		try {
@@ -32,6 +22,17 @@ public class Main {
 			System.exit(1);
 		}
 
+		try {
+			robot = new HandMouse(hand);
+		} catch (AWTException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+		if(robot ==null){
+			System.exit(-1);
+		}
+
+
 		MakeFrames frames = new MakeFrames(hand);
 
 
@@ -41,6 +42,7 @@ public class Main {
 				hand.getCameraImage();
 				hand.binarization();
 				frames.update();
+				robot.update();
 				System.out.println(hand.getCentroid());
 			}catch(Exception e){
 
