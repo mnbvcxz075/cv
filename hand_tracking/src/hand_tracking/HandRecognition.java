@@ -71,8 +71,6 @@ public class HandRecognition {
 
 	void binarization(){
 
-
-
 		//2値化
 		cvCvtColor(img,tempImg,BIN_TYPE);
 		cvInRangeS(tempImg, minThreshold, maxThreshold,binImg);
@@ -98,29 +96,33 @@ public class HandRecognition {
 		//2値画像を最大の輪郭へ変更
 		cvRectangle(binImg,cvPoint(0,0),cvPoint(img.width(),img.height()), cvScalar(0,0,0,0),-1,4,0);
         cvDrawContours( binImg, contours, CV_RGB(255,255,255), CV_RGB(255,255,255), -1, CV_FILLED, 8 );
-        cvDistTransform( binImg, dist,CV_DIST_L2,3,new float[]{},null,0);
-        int max1,max2,max3;
-         max1=max2=max3=0;
-        java.awt.Point p = new java.awt.Point();
-        for(int i=0;i<img.height();i++){
-        	for(int j=0;j<img.width();j++){
-        		//System.out.println(
-        				if(isLarge(dist.imageData().get((dist.widthStep()*i+j*4+1))
-        						  ,dist.imageData().get((dist.widthStep()*i+j*4+2))
-        						  ,dist.imageData().get((dist.widthStep()*i+j*4+3))
-        						  ,max1,max2,max3)
-        				){
-        					max1=dist.imageData().get((dist.widthStep()*i+j*4+1));
-        					max2 = dist.imageData().get((dist.widthStep()*i+j*4+2));
-        					max3 = dist.imageData().get((dist.widthStep()*i+j*4+3));
-        					p.x=j;p.y=i;
-         				};
+
+
+//        cvDistTransform( binImg, dist,CV_DIST_L2,3,new float[]{},null,0);
+//        int max1,max2,max3;
+//         max1=max2=max3=0;
+//        java.awt.Point p = new java.awt.Point();
+//        for(int i=0;i<img.height();i++){
+//        	for(int j=0;j<img.width();j++){
+//        		//System.out.println(
+//        				if(isLarge(dist.imageData().get((dist.widthStep()*i+j*4+1))
+//        						  ,dist.imageData().get((dist.widthStep()*i+j*4+2))
+//        						  ,dist.imageData().get((dist.widthStep()*i+j*4+3))
+//        						  ,max1,max2,max3)
+//        				){
+//        					max1=dist.imageData().get((dist.widthStep()*i+j*4+1));
+//        					max2 = dist.imageData().get((dist.widthStep()*i+j*4+2));
+//        					max3 = dist.imageData().get((dist.widthStep()*i+j*4+3));
+//        					p.x=j;p.y=i;
+//         				};
 //        		if(cvGet2D(dist,i,j).getVal(0)>maxDist){
 //        			p.x=j;p.y=i;
 //        		}
-        	}
-        }
-		//モーメントを用いた重心の導出
+//        	}
+//        }
+
+
+        //モーメントを用いた重心の導出
 		cvMoments(contours,moment);
 //		cvCircle(binImg,cvPoint(p.x,p.y),25, cvScalar(0,0,255,0),-1,4,0);
 		cvCircle(binImg,cvPoint((int)(moment.m10()/moment.m00()),(int)(moment.m01()/moment.m00())),25, cvScalar(0,0,255,0),-1,4,0);
