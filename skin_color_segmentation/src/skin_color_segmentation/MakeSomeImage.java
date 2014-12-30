@@ -18,6 +18,9 @@ public class MakeSomeImage {
 		grabber = new OpenCVFrameGrabber(0);
 		grabber.start();
 		img = grabber.grab();
+		cvRectangle(img,cvPoint(0,0),cvPoint(4,4), cvScalar(255,255,0,0),-1,1,0);
+		cvRectangle(img,cvPoint(0,2),cvPoint(2,3), cvScalar(0,0,255,0),-1,1,0);
+
 		imgs= new IplImage[3];
 
 		for(int i=0;i<3;i++){
@@ -52,14 +55,14 @@ public class MakeSomeImage {
 			System.exit(0);
 		}
 
-//		while(true){
+		while(true){
 			try {
 				obj.update();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-//		}
+		}
 
 	}
 
@@ -80,51 +83,18 @@ public class MakeSomeImage {
 	void makeImages(){
 		for(int i=0;i<3;i++){
 			for(int s=0;s<img.height();s++){
-				for(int t=0;t<img.width();t++){
-				switch(byteNum(img.imageData().get(t*3+s*img.widthStep()+i*8))){
-					case 0:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 0);break;
-					case 1:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 19);break;
-					case 2:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 38);break;
-					case 3:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 57);break;
-					case 4:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 76);break;
-					case 5:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 95);break;
-					case 6:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 114);break;
-					case 7:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 133);break;
-					case 8:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 152);break;
-					case 9:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 171);break;
-					case 10:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 190);break;
-					case 11:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 209);break;
-					case 12:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 228);break;
-					case 13:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 247);break;
-					}
-					System.out.println(img.imageData().get(t*4+s*img.widthStep())+","
-							+img.imageData().get(t*4+s*img.widthStep()+1)+","
-							+img.imageData().get(t*4+s*img.widthStep()+2)+","
-							+img.imageData().get(t*4+s*img.widthStep()+3)+"\n"
-							+img.imageData().get(t*4+s*img.widthStep()+4)+","
-							+img.imageData().get(t*4+s*img.widthStep()+5)+","
-							+img.imageData().get(t*4+s*img.widthStep()+6)+","
-							+img.imageData().get(t*4+s*img.widthStep()+7)+"\n"
-							+img.imageData().get(t*4+s*img.widthStep()+8)+","
-							+img.imageData().get(t*4+s*img.widthStep()+9)+","
-							+img.imageData().get(t*4+s*img.widthStep()+10)+","
-							+img.imageData().get(t*4+s*img.widthStep()+11)+"\n"
-							+img.imageData().get(t*4+s*img.widthStep()+12)+","
-							+img.imageData().get(t*4+s*img.widthStep()+13)+","
-							+img.imageData().get(t*4+s*img.widthStep()+14)+","
-							+img.imageData().get(t*4+s*img.widthStep()+15)+"\n"
-							+img.imageData().get(t*4+s*img.widthStep()+16)+","
-							+img.imageData().get(t*4+s*img.widthStep()+17)+","
-							+img.imageData().get(t*4+s*img.widthStep()+18)+","
-							+img.imageData().get(t*4+s*img.widthStep()+19)+"\n");
-							//+cvGet2D(img,s,t)+" "+cvGet2D(img,s,t+1));
+				for(int t=0;t<img.widthStep();t++){
+					imgs[i].imageData().put(t+s*imgs[i].widthStep(),(byte) byteNum(img.imageData().get(t*3+s*img.widthStep()+i)));
 				}
+				System.out.println();
 			}
 		}
 	}
 
 	int byteNum(int i){
-		i+=128;
+		if(i<0){
+			i=255-i;
+		}
 		if(i==0){
 			return 0;
 		}else if(i<20){
