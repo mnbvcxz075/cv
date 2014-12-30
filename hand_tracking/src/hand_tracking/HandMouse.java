@@ -6,7 +6,7 @@ public class HandMouse extends ControlMouse{
 	HandRecognition hand;
 
 	HandMouse(HandRecognition reco) throws AWTException{
-		super();//reco.getCentroid().x,reco.getCentroid().y);
+		super();;//reco.getCentroid().x,reco.getCentroid().y);
 
 		hand = reco;
 	}
