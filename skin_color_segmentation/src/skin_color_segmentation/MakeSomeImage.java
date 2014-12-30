@@ -99,9 +99,15 @@ public class MakeSomeImage {
 					}
 					System.out.println(img.imageData().get(t*4+s*img.widthStep())+","
 							+img.imageData().get(t*4+s*img.widthStep()+8)+","
-									+img.imageData().get(t*4+s*img.widthStep()+16)+","
-											+img.imageData().get(t*4+s*img.widthStep()+24)+","
-													+img.imageData().get(t*4+s*img.widthStep()+32)+","
+							+img.imageData().get(t*4+s*img.widthStep()+16)+","
+							+img.imageData().get(t*4+s*img.widthStep()+24)+","
+							+img.imageData().get(t*4+s*img.widthStep()+32)+","
+							+img.imageData().get(t*4+s*img.widthStep()+40)+","
+							+img.imageData().get(t*4+s*img.widthStep()+48)+","
+							+img.imageData().get(t*4+s*img.widthStep()+56)+","
+							+img.imageData().get(t*4+s*img.widthStep()+64)+","
+							+img.imageData().get(t*4+s*img.widthStep()+72)+","
+							+img.imageData().get(t*4+s*img.widthStep()+80)+","
 							+cvGet2D(img,s,t));
 				}
 			}
