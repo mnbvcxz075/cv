@@ -79,8 +79,8 @@ public class MakeSomeImage {
 
 	void makeImages(){
 		for(int i=0;i<3;i++){
-			for(int s=0;s<img.height();s++){
-				for(int t=0;t<img.width();t++){
+			for(int s=0;s<1;s++){
+				for(int t=0;t<1;t++){
 				switch(byteNum(img.imageData().get(t*3+s*img.widthStep()+i*8))){
 					case 0:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 0);break;
 					case 1:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 19);break;
@@ -100,11 +100,11 @@ public class MakeSomeImage {
 					System.out.println(img.imageData().get(t*4+s*img.widthStep())+","
 							+img.imageData().get(t*4+s*img.widthStep()+1)+","
 							+img.imageData().get(t*4+s*img.widthStep()+2)+","
-							+img.imageData().get(t*4+s*img.widthStep()+3)+" "
+							+img.imageData().get(t*4+s*img.widthStep()+3)+"\n"
 							+img.imageData().get(t*4+s*img.widthStep()+4)+","
 							+img.imageData().get(t*4+s*img.widthStep()+5)+","
 							+img.imageData().get(t*4+s*img.widthStep()+6)+","
-							+img.imageData().get(t*4+s*img.widthStep()+7)+" "
+							+img.imageData().get(t*4+s*img.widthStep()+7)+"\n"
 							+img.imageData().get(t*4+s*img.widthStep()+8)+","
 							+img.imageData().get(t*4+s*img.widthStep()+9)+","
 							+img.imageData().get(t*4+s*img.widthStep()+10)+","
