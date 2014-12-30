@@ -1,6 +1,7 @@
 package skin_color_segmentation;
 
 import static org.bytedeco.javacpp.opencv_core.*;
+import static org.bytedeco.javacpp.opencv_imgproc.*;
 
 import org.bytedeco.javacpp.opencv_core.IplImage;
 import org.bytedeco.javacv.CanvasFrame;
@@ -56,14 +57,14 @@ public class MakeSomeImage {
 			System.exit(0);
 		}
 
-//		while(true){
+		while(true){
 			try {
 				obj.update();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-//		}
+		}
 
 	}
 
@@ -71,6 +72,7 @@ public class MakeSomeImage {
 
 		makeImages();
 		img=grabber.grab();
+		cvCvtColor(img,img,CV_BGR2HSV);
 		canvas[0].showImage(img);
 
 		for(int i=0;i<3;i++){
