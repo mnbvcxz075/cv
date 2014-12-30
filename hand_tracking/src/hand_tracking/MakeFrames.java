@@ -23,6 +23,7 @@ public class MakeFrames implements ActionListener{
 	MakeFrames(HandRecognition hand){
 		this.hand = hand;
 		controler = initControler();
+		controler.setVisible(true);
 		canvas = ShowImage.initCanvas(hand.img.width(), hand.img.height(), 400);
 	}
 
