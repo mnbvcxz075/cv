@@ -40,7 +40,7 @@ public class Main {
 			try{
 				hand.getCameraImage();
 				hand.binarization();
-				//MakeCanvas canvas = new MakeCanvas(hand.binImg);
+				MakeCanvas canvas = new MakeCanvas(hand.binImg);
 				System.out.println(hand.getCentroid());
 			}catch(Exception e){
 
