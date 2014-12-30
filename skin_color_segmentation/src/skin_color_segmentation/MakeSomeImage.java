@@ -19,10 +19,12 @@ public class MakeSomeImage {
 		grabber = new OpenCVFrameGrabber(0);
 		grabber.start();
 		img = grabber.grab();
+
+
 //		img = cvCreateImage(cvSize(4,4), IPL_DEPTH_8U, 3);
 //		cvRectangle(img,cvPoint(0,0),cvPoint(4,4), cvScalar(255,100,0,0),-1,1,0);
 //		cvRectangle(img,cvPoint(0,2),cvPoint(2,3), cvScalar(0,0,255,0),-1,1,0);
-
+//
 		imgs= new IplImage[3];
 
 		for(int i=0;i<3;i++){
@@ -31,11 +33,9 @@ public class MakeSomeImage {
 
 		canvas = new CanvasFrame[4];
 		canvas[0]=new CanvasFrame("");
-
 		canvas[1]=new CanvasFrame("b");
 		canvas[2]=new CanvasFrame("g");
 		canvas[3]=new CanvasFrame("r");
-
 		for(int i=0;i<4;i++){
 			canvas[i].setCanvasSize(img.width()/2,img.height()/2);
 			canvas[i].setVisible(true);
@@ -84,12 +84,12 @@ public class MakeSomeImage {
 
 
 	void makeImages(){
-		for(int i=0;i<3;i++){
 			for(int s=0;s<img.height();s++){
 				for(int t=0;t<img.widthStep();t++){
-					imgs[i].imageData().put(t+s*imgs[i].widthStep(),(img.imageData().get(t*3+s*img.widthStep()+i)));
+						imgs[t%3].imageData().put(t/3+s*imgs[t%3].widthStep(),(img.imageData().get(t+s*img.widthStep())));
+
 				}
 			}
 		}
-	}
+
 }
