@@ -99,8 +99,10 @@ public class MakeSomeImage {
 					}
 					System.out.println(img.imageData().get(t*4+s*img.widthStep())+","
 							+img.imageData().get(t*4+s*img.widthStep()+8)+","
-							+img.imageData().get(t*4+s*img.widthStep()+16)+","
-							+cvGet2D(img,t,s));
+									+img.imageData().get(t*4+s*img.widthStep()+16)+","
+											+img.imageData().get(t*4+s*img.widthStep()+24)+","
+													+img.imageData().get(t*4+s*img.widthStep()+32)+","
+							+cvGet2D(img,s,t));
 				}
 			}
 		}
