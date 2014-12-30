@@ -18,6 +18,7 @@ public class MakeSomeImage {
 		grabber = new OpenCVFrameGrabber(0);
 		grabber.start();
 		img = grabber.grab();
+		imgs= new IplImage[3];
 
 		for(int i=0;i<3;i++){
 			imgs[i] = cvCreateImage(img.cvSize(), IPL_DEPTH_8U, 1);
