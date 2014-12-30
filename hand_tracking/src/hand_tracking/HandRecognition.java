@@ -49,8 +49,6 @@ public class HandRecognition {
         moment =new CvMoments();
         tempImg = cvCreateImage(img.cvSize(),IPL_DEPTH_8U, 3);
         dist =cvCreateImage(img.cvSize(),IPL_DEPTH_32F, 1);
-
-
 	}
 	HandRecognition(String url) throws IOException{
 		img = IplImage.createFrom(ImageIO.read(new File(url)));
@@ -132,6 +130,7 @@ public class HandRecognition {
 		cvCircle(binImg,cvPoint((int)(moment.m10()/moment.m00()),(int)(moment.m01()/moment.m00())),25, cvScalar(0,0,255,0),-1,4,0);
 //
 	}
+
 	boolean isLarge(byte b1,byte b2,byte b3,int i1,int i2,int i3){
 		if(b3>i3){
 			return true;
@@ -148,5 +147,24 @@ public class HandRecognition {
 			}
 		}
 		return false;
+	}
+
+	CvScalar getMaxThreshold(){
+		return maxThreshold;
+	}
+	double getMaxThreshold(int n){
+		return maxThreshold.get(n);
+	}
+	CvScalar getMinThreshold(){
+		return minThreshold;
+	}
+	double getMinThreshold(int n){
+		return minThreshold.get(n);
+	}
+	void setMaxThreshold(int n,double d){
+		maxThreshold.put(n,d);
+	}
+	void setMinThreshold(int n,double d){
+		minThreshold.put(n,d);
 	}
 }

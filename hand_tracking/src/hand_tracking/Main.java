@@ -32,18 +32,14 @@ public class Main {
 			System.exit(1);
 		}
 
+		MakeFrames Frames = new MakeFrames(hand);
 
 
-
-		MakeCanvas canvas = new MakeCanvas(hand.binImg);
-		MakeCanvas canvas2 = new MakeCanvas(hand.binImg);
 //		while(true){
 		for(int i=0;i<10000000;i++){
 			try{
 				hand.getCameraImage();
 				hand.binarization();
-				canvas.canvas.showImage(hand.binImg);
-				canvas2.canvas.showImage(hand.img);
 				System.out.println(hand.getCentroid());
 			}catch(Exception e){
 
