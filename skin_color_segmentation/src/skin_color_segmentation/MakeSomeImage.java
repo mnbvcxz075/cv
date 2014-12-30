@@ -25,9 +25,14 @@ public class MakeSomeImage {
 		}
 
 		canvas = new CanvasFrame[4];
+		canvas[0]=new CanvasFrame("");
+
+		canvas[1]=new CanvasFrame("b");
+		canvas[2]=new CanvasFrame("g");
+		canvas[3]=new CanvasFrame("r");
+
 		for(int i=0;i<4;i++){
-			canvas[i]=new CanvasFrame("");
-			canvas[i].setCanvasSize(img.width(),img.height());
+					canvas[i].setCanvasSize(img.width()/2,img.height()/2);
 			canvas[i].setVisible(true);
 		}
 
@@ -76,23 +81,24 @@ public class MakeSomeImage {
 		for(int i=0;i<3;i++){
 			for(int s=0;s<img.height();s++){
 				for(int t=0;t<img.width();t++){
-				switch(byteNum(img.imageData().get(t*4+s*img.widthStep()+i*8))){
-					case 0:imgs[i].imageData().put(t+s*img.widthStep(), (byte) 0);break;
-					case 1:imgs[i].imageData().put(t+s*img.widthStep(), (byte) 19);break;
-					case 2:imgs[i].imageData().put(t+s*img.widthStep(), (byte) 38);break;
-					case 3:imgs[i].imageData().put(t+s*img.widthStep(), (byte) 57);break;
-					case 4:imgs[i].imageData().put(t+s*img.widthStep(), (byte) 76);break;
-					case 5:imgs[i].imageData().put(t+s*img.widthStep(), (byte) 95);break;
-					case 6:imgs[i].imageData().put(t+s*img.widthStep(), (byte) 114);break;
-					case 7:imgs[i].imageData().put(t+s*img.widthStep(), (byte) 133);break;
-					case 8:imgs[i].imageData().put(t+s*img.widthStep(), (byte) 152);break;
-					case 9:imgs[i].imageData().put(t+s*img.widthStep(), (byte) 171);break;
-					case 10:imgs[i].imageData().put(t+s*img.widthStep(), (byte) 190);break;
-					case 11:imgs[i].imageData().put(t+s*img.widthStep(), (byte) 209);break;
-					case 12:imgs[i].imageData().put(t+s*img.widthStep(), (byte) 228);break;
-					case 13:imgs[i].imageData().put(t+s*img.widthStep(), (byte) 247);break;
+				switch(byteNum(img.imageData().get(t*3+s*img.widthStep()+i*8))){
+					case 0:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 0);break;
+					case 1:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 19);break;
+					case 2:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 38);break;
+					case 3:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 57);break;
+					case 4:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 76);break;
+					case 5:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 95);break;
+					case 6:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 114);break;
+					case 7:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 133);break;
+					case 8:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 152);break;
+					case 9:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 171);break;
+					case 10:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 190);break;
+					case 11:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 209);break;
+					case 12:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 228);break;
+					case 13:imgs[i].imageData().put(t+s*imgs[i].widthStep(), (byte) 247);break;
 					}
-					//System.out.println(img.imageData().get(t*4+s*img.widthStep()+i*8));
+					System.out.println(img.imageData().get(t*4+s*img.widthStep()+i*8)+""
+									+cvGet2D(img,t,s));
 				}
 			}
 		}
@@ -101,7 +107,7 @@ public class MakeSomeImage {
 	int byteNum(int i){
 		i+=128;
 		if(i==0){
-			return 0;
+			return 0; 
 		}else if(i<20){
 			return 1;
 		}else if(i<40){
