@@ -89,9 +89,16 @@ public class MakeSomeImage {
 //						imgs[t%3].imageData().put(t/3+s*imgs[t%3].widthStep(),(img.imageData().get(t+s*img.widthStep())));
 //				}
 //			}
+		byte l = 0,b=0;
 		for(int s=0;s<img.height();s++){
 			for(int t=0;t<img.widthStep();t+=3){
-				imgs[0].imageData().put(t/3+s*imgs[0].widthStep(),(img.imageData().get(t+s*img.widthStep())));
+				l=img.imageData().get(t+s*img.widthStep());
+				if(l<0){
+					b=0;
+				}else{
+					b=-128;
+				}
+				imgs[0].imageData().put(t/3+s*imgs[0].widthStep(),b);
 			}
 		}
 
