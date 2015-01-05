@@ -21,6 +21,7 @@ public class MakeSomeImage {
 		grabber.start();
 		img = grabber.grab();
 
+		gray = cvCreateImage(img.cvSize(),IPL_DEPTH_8U,3);
 
 //		img = cvCreateImage(cvSize(4,4), IPL_DEPTH_8U, 3);
 //		cvRectangle(img,cvPoint(0,0),cvPoint(4,4), cvScalar(255,100,0,0),-1,1,0);
