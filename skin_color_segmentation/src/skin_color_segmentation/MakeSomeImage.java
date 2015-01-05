@@ -37,6 +37,7 @@ public class MakeSomeImage {
 		canvas[2]=new CanvasFrame("g");
 		canvas[3]=new CanvasFrame("r");
 		for(int i=0;i<4;i++){
+	        canvas[i].setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
 			canvas[i].setCanvasSize(img.width()/2,img.height()/2);
 			canvas[i].setVisible(true);
 		}
@@ -89,6 +90,8 @@ public class MakeSomeImage {
 //						imgs[t%3].imageData().put(t/3+s*imgs[t%3].widthStep(),(img.imageData().get(t+s*img.widthStep())));
 //				}
 //			}
+		IplImage mask = cvCreateImage(img.cvSize(), IPL_DEPTH_8U, 1);
+		cvCopy(img,mask,img);
 		byte l = 0,b=0;
 		for(int s=0;s<img.height();s++){
 			for(int t=0;t<img.widthStep();t+=3){
