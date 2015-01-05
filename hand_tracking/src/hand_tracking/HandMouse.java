@@ -4,16 +4,26 @@ import java.awt.AWTException;
 
 public class HandMouse extends ControlMouse{
 	HandRecognition hand;
+	boolean isInterface;
 
 	HandMouse(HandRecognition reco) throws AWTException{
-		super();//reco.getCentroid().x,reco.getCentroid().y);
+		super();
 
 		hand = reco;
 	}
 
+	HandMouse(HandRecognition reco,boolean bool) throws AWTException{
+		super();
+
+		hand = reco;
+		isInterface=bool;
+	}
+
 	void update(){
 		setPosition(hand.getCentroid().x,hand.getCentroid().y);
-		mouseMove();
+		if(isInterface){
+			mouseMove();
+		}
 	}
 
 
