@@ -27,15 +27,15 @@ public class HandRecognition {
 	IplImage binImg;
 	IplImage tempImg;
 	IplImage dist;
+	IplImage handImg;
 
-	private IplImage handImg;
 	private CvSeq contours;
 	private CvMemStorage mem ;
 	private CvMoments moment;
 	private OpenCVFrameGrabber grabber;
-	private  CvScalar maxThreshold = cvScalar(60,255,180,255)
+	private  CvScalar maxThreshold = cvScalar(255,255,255,255)
 			,minThreshold = cvScalar(0,0,0,0);
-	private final int BIN_TYPE = CV_BGR2HSV;
+	private final int BIN_TYPE = CV_BGR2Lab;
 
 
 	HandRecognition() throws Exception{
@@ -48,6 +48,7 @@ public class HandRecognition {
 		centroid= new java.awt.Point();
 
         binImg = cvCreateImage(img.cvSize(), IPL_DEPTH_8U, 1);
+        handImg = binImg.clone();
         contours = new CvContour();
         mem = CvMemStorage.create();
         moment =new CvMoments();
@@ -84,14 +85,16 @@ public class HandRecognition {
 
 		//ノイズ除去
 		cvErode(binImg,binImg,null,4);
-		cvDilate(binImg,binImg,null,5);
-		cvErode(binImg,binImg,null,1);
+		cvDilate(binImg,binImg,null,6);
+		cvErode(binImg,binImg,null,2);
 
 		//輪郭抽出
-		cvFindContours(binImg.clone(),mem,contours,Loader.sizeof(CvContour.class),CV_RETR_EXTERNAL,CV_CHAIN_APPROX_NONE  );
+		int con = cvFindContours(binImg.clone(),mem,contours,Loader.sizeof(CvContour.class),CV_RETR_EXTERNAL,CV_CHAIN_APPROX_NONE);
+		if(con<2){
+			return;
+		}
 
-
-		//輪郭ポインタの先頭を最大の物へ変更
+		//輪郭のポインタを最大の物へ変更
 		double max=0;
 		for(CvSeq ptr=contours;ptr!=null;ptr = ptr.h_next()){
 			double size = cvContourArea(ptr);
@@ -101,9 +104,9 @@ public class HandRecognition {
 			}
 		}
 
-		//2値画像を最大の輪郭へ変更
-		cvRectangle(binImg,cvPoint(0,0),cvPoint(img.width(),img.height()), cvScalar(0,0,0,0),-1,4,0);
-        cvDrawContours( binImg, contours, CV_RGB(255,255,255), CV_RGB(255,255,255), -1, CV_FILLED, 8 );
+		//手の画像を作成
+
+        cvDrawContours( handImg, contours, CV_RGB(255,255,255), CV_RGB(255,255,255), -1, CV_FILLED, 8 );
 
 
 //        cvDistTransform( binImg, dist,CV_DIST_L2,3,new float[]{},null,0);
@@ -132,9 +135,9 @@ public class HandRecognition {
 
         //モーメントを用いた重心の導出
 		cvMoments(contours,moment);
-		centroid.x =(int)(moment.m01()/moment.m00());
-		centroid.y = (int)(moment.m10()/moment.m00());
-		cvCircle(binImg,cvPoint(centroid.x,centroid.y),25, cvScalar(0,0,255,0),-1,4,0);
+		centroid.y =(int)(moment.m01()/moment.m00());
+		centroid.x = (int)(moment.m10()/moment.m00());
+		cvCircle(handImg,cvPoint(centroid.x,centroid.y),25, cvScalar(0,0,255,0),-1,4,0);
 //
 	}
 

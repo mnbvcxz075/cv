@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import org.bytedeco.javacv.CanvasFrame;
 
 public class MakeFrames implements ActionListener{
-	CanvasFrame canvas;
+	CanvasFrame binCanvas,handCanvas;
 	HandRecognition hand;
 	JFrame controler;
 	JLabel label,label2;
@@ -24,7 +24,13 @@ public class MakeFrames implements ActionListener{
 		this.hand = hand;
 		controler = initControler();
 		controler.setVisible(true);
-		canvas = ShowImage.initCanvas(hand.img.width(), hand.img.height(), 400);
+		binCanvas = ShowImage.initCanvas(hand.img.width(), hand.img.height(), 400);
+		handCanvas = ShowImage.initCanvas(hand.img.width(), hand.img.height(), 400);
+	}
+
+	public void update(){
+		binCanvas.showImage(hand.binImg);
+		handCanvas.showImage(hand.handImg);
 	}
 
 	public JFrame initControler(){
@@ -123,7 +129,4 @@ public class MakeFrames implements ActionListener{
 		label2.setText(hand.getMinThreshold().toString());
 	}
 
-	public void update(){
-		canvas.showImage(hand.binImg);
-	}
 }
