@@ -40,7 +40,7 @@ public class MakeSomeImage {
 		canvas[3]=new CanvasFrame("r");
 		for(int i=0;i<4;i++){
 	        canvas[i].setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
-			canvas[i].setCanvasSize(img.width()/2,img.height()/2);
+			canvas[i].setCanvasSize(img.width()/2,img.height()/2);;
 			canvas[i].setVisible(true);
 		}
 
