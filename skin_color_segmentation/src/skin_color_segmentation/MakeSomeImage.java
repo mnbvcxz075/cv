@@ -96,8 +96,11 @@ public class MakeSomeImage {
 				l=img.imageData().get(t+s*img.widthStep());
 				if(l>30||(-10>l)){
 					b=0;
-				}else{
+				}else if(l<0){
 					b=127;
+				}else{
+					b=-128;
+
 				}
 				imgs[0].imageData().put(t/3+s*imgs[0].widthStep(),b);
 			}
