@@ -73,9 +73,9 @@ public class MakeSomeImage {
 		makeImages();
 		img=grabber.grab();
 		canvas[0].showImage(img);
-		cvCvtColor(img,img,CV_BGR2HSV);
+		cvCvtColor(img,img,CV_BGR2Lab);
 
-		for(int i=0;i<3;i++){
+		for(int i=0;i<1;i++){
 			canvas[i+1].showImage(imgs[i]);
 		}
 
@@ -84,12 +84,17 @@ public class MakeSomeImage {
 
 
 	void makeImages(){
-			for(int s=0;s<img.height();s++){
-				for(int t=0;t<img.widthStep();t++){
-						imgs[t%3].imageData().put(t/3+s*imgs[t%3].widthStep(),(img.imageData().get(t+s*img.widthStep())));
-
-				}
+//			for(int s=0;s<img.height();s++){
+//				for(int t=0;t<img.widthStep();t++){
+//						imgs[t%3].imageData().put(t/3+s*imgs[t%3].widthStep(),(img.imageData().get(t+s*img.widthStep())));
+//				}
+//			}
+		for(int s=0;s<img.height();s++){
+			for(int t=0;t<img.widthStep();t+=3){
+				imgs[0].imageData().put(t/3+s*imgs[0].widthStep(),(img.imageData().get(t+s*img.widthStep())));
 			}
 		}
+
+	}
 
 }
