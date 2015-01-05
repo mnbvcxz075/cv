@@ -13,7 +13,6 @@ public class MakeSomeImage {
 	OpenCVFrameGrabber grabber;
 	IplImage img ;
 	IplImage imgs[];
-	IplImage gray;
 
 
 	MakeSomeImage() throws Exception{
@@ -21,7 +20,6 @@ public class MakeSomeImage {
 		grabber.start();
 		img = grabber.grab();
 
-		gray = img.clone();
 
 //		img = cvCreateImage(cvSize(4,4), IPL_DEPTH_8U, 3);
 //		cvRectangle(img,cvPoint(0,0),cvPoint(4,4), cvScalar(255,100,0,0),-1,1,0);
@@ -78,10 +76,10 @@ public class MakeSomeImage {
 		canvas[0].showImage(img);
 		cvCvtColor(img,img,CV_BGR2Lab);
 
-//		for(int i=0;i<1;i++){
-//			canvas[i+1].showImage(imgs[i]);
-//		}
-		canvas[0].showImage(gray);
+		for(int i=0;i<1;i++){
+			canvas[i+1].showImage(imgs[i]);
+		}
+
 	}
 
 
@@ -92,7 +90,19 @@ public class MakeSomeImage {
 //						imgs[t%3].imageData().put(t/3+s*imgs[t%3].widthStep(),(img.imageData().get(t+s*img.widthStep())));
 //				}
 //			}
-//		IplImage gray = null ;
+		byte l = 0,b=0;
+		for(int s=0;s<img.height();s++){
+			for(int t=0;t<img.widthStep();t+=3){
+				l=img.imageData().get(t+s*img.widthStep());
+				if(l<0){
+					b=0;
+				}else{
+					b=-128;
+				}
+				imgs[0].imageData().put(t/3+s*imgs[0].widthStep(),b);
+			}
+		}
+
 	}
 
 }
