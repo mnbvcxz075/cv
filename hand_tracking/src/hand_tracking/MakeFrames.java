@@ -100,22 +100,22 @@ public class MakeFrames implements ActionListener{
 		if(e.getActionCommand().equals("Cbmax -")&&hand.getMaxThreshold(2)-amount>=0){
 			hand.setMaxThreshold(2, hand.getMaxThreshold(2)-amount);
 		}
-		if(e.getActionCommand().equals("Ymin +")&&hand.getMaxThreshold(0)+amount<=254){
+		if(e.getActionCommand().equals("Ymin +")&&hand.getMinThreshold(0)+amount<=254){
 			hand.setMinThreshold(0, hand.getMinThreshold(0)+amount);
 		}
-		if(e.getActionCommand().equals("Ymin -")&&hand.getMaxThreshold(0)-amount>=0){
+		if(e.getActionCommand().equals("Ymin -")&&hand.getMinThreshold(0)-amount>=0){
 			hand.setMinThreshold(0, hand.getMinThreshold(0)-amount);
 		}
-		if(e.getActionCommand().equals("Crmin +")&&hand.getMaxThreshold(1)+amount<=255){
+		if(e.getActionCommand().equals("Crmin +")&&hand.getMinThreshold(1)+amount<=255){
 			hand.setMinThreshold(1, hand.getMinThreshold(1)+amount);
 		}
-		if(e.getActionCommand().equals("Crmin -")&&hand.getMaxThreshold(1)-amount>=0){
+		if(e.getActionCommand().equals("Crmin -")&&hand.getMinThreshold(1)-amount>=0){
 			hand.setMinThreshold(1, hand.getMinThreshold(1)-amount);
 		}
-		if(e.getActionCommand().equals("Cbmin +")&&hand.getMaxThreshold(2)+amount<=255){
+		if(e.getActionCommand().equals("Cbmin +")&&hand.getMinThreshold(2)+amount<=255){
 			hand.setMinThreshold(2, hand.getMinThreshold(2)+amount);
 		}
-		if(e.getActionCommand().equals("Cbmin -")&&hand.getMaxThreshold(2)-amount>=0){
+		if(e.getActionCommand().equals("Cbmin -")&&hand.getMinThreshold(2)-amount>=0){
 			hand.setMinThreshold(2, hand.getMinThreshold(2)-amount);
 		}
 
