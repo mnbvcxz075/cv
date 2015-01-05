@@ -93,8 +93,6 @@ public class MakeSomeImage {
 //				}
 //			}
 //		IplImage gray = null ;
-		cvCvtColor(img,gray,CV_BGR2GRAY);
-		cvThreshold(gray,gray,128,0,CV_THRESH_TOZERO_INV);
 	}
 
 }
