@@ -39,11 +39,11 @@ public class HandRecognition {
 
 
 	HandRecognition() throws Exception{
-		//カメラ起動
+	//カメラ起動
         grabber = new OpenCVFrameGrabber(0);
         double frameRate = grabber.getFrameRate();
         grabber.start();
-
+    //変数初期化
 		img = grabber.grab();
 		centroid= new java.awt.Point();
 
@@ -56,6 +56,7 @@ public class HandRecognition {
 	}
 	HandRecognition(String url) throws IOException{
 		img = IplImage.createFrom(ImageIO.read(new File(url)));
+	    //変数初期化
 		centroid= new java.awt.Point();
 
         binImg = cvCreateImage(img.cvSize(),IPL_DEPTH_8U, 1);
@@ -88,6 +89,7 @@ public class HandRecognition {
 
 		//輪郭抽出
 		cvFindContours(binImg.clone(),mem,contours,Loader.sizeof(CvContour.class),CV_RETR_EXTERNAL,CV_CHAIN_APPROX_NONE  );
+
 
 		//輪郭ポインタの先頭を最大の物へ変更
 		double max=0;

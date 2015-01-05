@@ -11,26 +11,16 @@ public class Main {
 		HandMouse robot = null;
 		HandRecognition hand = null;
 
-		//手のひら認識用オブジェクトの用意
+		//手のひら認識、マウスの乗っ取りの用意
 		try {
 			hand = new HandRecognition();
 			System.out.println(hand.img);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		if(hand.img==null){
-			System.exit(1);
-		}
-
-		//マウスの乗っ取り
-		try {
 			robot = new HandMouse(hand,false);
-		} catch (AWTException e) {
-			// TODO 自動生成された catch ブロック
+		} catch (Exception | AWTException e) {
 			e.printStackTrace();
 		}
-		if(robot ==null){
-			System.exit(-1);
+		if(hand.img==null||robot ==null){
+			System.exit(1);
 		}
 
 		//フレームの初期化
