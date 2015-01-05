@@ -99,7 +99,7 @@ public class MakeSomeImage {
 				}else if(l<0){
 					b=127;
 				}else{
-					b=-128;
+					b=-60;
 
 				}
 				imgs[0].imageData().put(t/3+s*imgs[0].widthStep(),b);
