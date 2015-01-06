@@ -90,7 +90,7 @@ public class HandRecognition {
 
 		//輪郭抽出
 		int con = cvFindContours(binImg.clone(),mem,contours,Loader.sizeof(CvContour.class),CV_RETR_EXTERNAL,CV_CHAIN_APPROX_NONE);
-		if(con<2){
+		if(con<1){
 			return;
 		}
 
@@ -106,6 +106,7 @@ public class HandRecognition {
 
 		//手の画像を作成
 
+		cvRectangle(handImg,cvPoint(0,0),cvPoint(img.width(),img.height()), cvScalar(0,0,0,0),-1,4,0);
         cvDrawContours( handImg, contours, CV_RGB(255,255,255), CV_RGB(255,255,255), -1, CV_FILLED, 8 );
 
 

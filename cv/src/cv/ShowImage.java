@@ -159,9 +159,9 @@ public class ShowImage {
 	}
 
 	public static void imagePreparation(IplImage img){
-		
+
 	}
-	
+
 	public static void main(String args[]){
 		IplImage img = null;
 		try {
@@ -187,6 +187,7 @@ public class ShowImage {
 //		cvFindContours(binImg.clone(),mem,contours,Loader.sizeof(CvContour.class),CV_RETR_EXTERNAL,CV_CHAIN_APPROX_NONE  );
 //		cvApproxPoly(contours, Loader.sizeof(CvContour.class),mem, CV_POLY_APPROX_DP, 10,0);
 //		cvDrawContours (img, contours, CV_RGB (255, 0, 0), CV_RGB (0, 255, 0), 0, 2, CV_AA, cvPoint (0, 0));
+
 ////////////////////////////////////////////////////////////////////////
 
 //		IplImage temp = cvCreateImage(img.cvSize(),IPL_DEPTH_32F,1);
@@ -220,6 +221,7 @@ public class ShowImage {
 //
 //		cvDistTransform(binImg,temp);//,1,3,null,null,0);
 //		cvNormalize(temp,distance,0.0,255.0,CV_MINMAX,null);
+
 //////////////////////////////////////////////////////////////////////////////
 
 		CanvasFrame canvas = initCanvas(img.width(),img.height(),600);
