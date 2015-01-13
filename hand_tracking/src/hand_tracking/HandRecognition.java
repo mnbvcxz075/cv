@@ -61,6 +61,7 @@ public class HandRecognition {
 		centroid= new java.awt.Point();
 
         binImg = cvCreateImage(img.cvSize(),IPL_DEPTH_8U, 1);
+        handImg = binImg.clone();
         contours = new CvContour();
         mem = CvMemStorage.create();
         moment =new CvMoments();
@@ -70,7 +71,7 @@ public class HandRecognition {
 	}
 
 	void getCameraImage() throws Exception{
-		img = grabber.grab();
+//		img = grabber.grab();
 	}
 
 	java.awt.Point getCentroid(){
@@ -90,6 +91,8 @@ public class HandRecognition {
 
 		//輪郭抽出
 		int con = cvFindContours(binImg.clone(),mem,contours,Loader.sizeof(CvContour.class),CV_RETR_EXTERNAL,CV_CHAIN_APPROX_NONE);
+
+		System.out.println(con);
 		if(con<1){
 			return;
 		}
@@ -138,7 +141,7 @@ public class HandRecognition {
 		cvMoments(contours,moment);
 		centroid.y =(int)(moment.m01()/moment.m00());
 		centroid.x = (int)(moment.m10()/moment.m00());
-		cvCircle(handImg,cvPoint(centroid.x,centroid.y),25, cvScalar(0,0,255,0),-1,4,0);
+		cvCircle(handImg,cvPoint(centroid.x,centroid.y),5, cvScalar(0,0,255,0),-1,4,0);
 //
 	}
 
